@@ -18,6 +18,12 @@ class LoginController(
         private val loginService: LoginService
 ) {
         private val logger = LoggerFactory.getLogger(LoginController::class.java)
+
+        @GetMapping("/")
+        fun home(): String {
+                return "home"
+        }
+
         @PostMapping("/loginCheck")
         fun loginIdCheck(
                 @RequestParam("id") id: String,
@@ -34,17 +40,6 @@ class LoginController(
                 val sessionCodeName = SessionCode.LoginUser.getSessionName()
                 val session = httpServletRequest.getSession(true)
                 session.setAttribute(sessionCodeName, user)
-                return "redirect:/main"
-        }
-        @GetMapping("/main")
-        fun main( model: Model,
-                  httpServletRequest: HttpServletRequest,
-                  httpServletResponse: HttpServletResponse
-        ): String {
-                val session = httpServletRequest.getSession(false)
-                if (session === null )  return "redirect:/"
-                val sessionCodeName = SessionCode.LoginUser.getSessionName()
-                model.addAttribute(sessionCodeName, session.getAttribute(sessionCodeName))
-                return "main"
+                return "redirect:/account"
         }
 }
