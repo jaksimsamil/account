@@ -1,6 +1,6 @@
 package com.jak.account.controller
 
-import com.jak.account.service.AccountService
+import com.jak.account.service.ExpenseService
 import com.jak.account.util.SessionCode
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
@@ -12,7 +12,7 @@ import java.util.*
 
 @Controller
 class AccountController(
-        private val accountService: AccountService
+        private val expenseService: ExpenseService
 ) {
         private val logger = LoggerFactory.getLogger(AccountController::class.java)
 
@@ -23,8 +23,10 @@ class AccountController(
         ): String {
                 val session = httpServletRequest.getSession(false)
                 if (session === null )  return "redirect:/"
+
                 val sessionCodeName = SessionCode.LoginUser.getSessionName()
                 model.addAttribute(sessionCodeName, session.getAttribute(sessionCodeName))
+                model.addAttribute("expenseList", expenseService.getExpenseList())
                 return "account"
         }
 }
