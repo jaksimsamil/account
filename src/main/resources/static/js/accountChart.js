@@ -26,5 +26,15 @@ $(function() {
     };
     new Chart( document.getElementById('accountChart'), {
             type: 'line',
-            data:dataset});}
+            data: dataset,
+            options: {
+                responsive: true,
+                    scales: {
+                        y: {
+                            min: 500000,
+                            ticks: { stepSize: 500000}
+                        }
+                    }
+                }
+            });}
 );
