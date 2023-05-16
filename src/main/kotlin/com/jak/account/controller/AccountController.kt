@@ -21,9 +21,9 @@ class AccountController(
                   httpServletRequest: HttpServletRequest,
                   httpServletResponse: HttpServletResponse
         ): String {
+                logger.info("AccountController Start")
+                // pre-condition: Logon success on LoginFilter
                 val session = httpServletRequest.getSession(false)
-                if (session === null )  return "redirect:/"
-
                 val sessionCodeName = SessionCode.LoginUser.getSessionName()
                 model.addAttribute(sessionCodeName, session.getAttribute(sessionCodeName))
                 model.addAttribute("expenseList", expenseService.getExpenseList())

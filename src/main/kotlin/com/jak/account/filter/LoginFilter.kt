@@ -1,7 +1,5 @@
 package com.jak.account.filter
 
-import com.jak.account.controller.LoginController
-import com.jak.account.util.SessionCode
 import jakarta.servlet.Filter
 import jakarta.servlet.FilterChain
 import jakarta.servlet.ServletRequest
@@ -9,16 +7,13 @@ import jakarta.servlet.ServletResponse
 import jakarta.servlet.annotation.WebFilter
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
-import org.hibernate.Session
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 import org.springframework.util.PatternMatchUtils
-import java.util.ArrayList
 
 @Component
 @WebFilter("/*")
 class LoginFilter : Filter {
-
         private val logger = LoggerFactory.getLogger(LoginFilter::class.java)
         private val whiteUriList = arrayOf("/")
 
@@ -36,11 +31,7 @@ class LoginFilter : Filter {
                         1. 로그인을 안했다면, 첫페이지("/")로
                         2. 로그인을 했다면, pass
                  */
-                val session = httpServletRequest.getSession(false)
-                if (session != null ) {
-                        if ( isLoginPath(httpServletRequest.requestURI) ) httpServletResponse.sendRedirect("/account")
-                }
-
+                //val session = httpServletRequest.getSession(false)
                 filterChain.doFilter(httpServletRequest, httpServletResponse)
         }
         private fun isLoginPath(pathUri: String) = PatternMatchUtils.simpleMatch(whiteUriList, pathUri)

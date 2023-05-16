@@ -26,6 +26,7 @@ class LoginController(
 
         @PostMapping("/loginCheck")
         fun loginIdCheck(
+                //TODO:  Parameter Validate
                 @RequestParam("id") id: String,
                 @RequestParam("password") password: String,
                 model: Model,
