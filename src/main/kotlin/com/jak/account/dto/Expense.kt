@@ -15,6 +15,6 @@ class Expense (
                 seq = seq,
                 fixValue = fixValue,
                 varValue = varValue,
-                aggDate = SimpleDateFormat("yyyy / MM").format(aggDate)
+                aggDate = SimpleDateFormat("yyyy/MM").format(aggDate)
         )
 }
