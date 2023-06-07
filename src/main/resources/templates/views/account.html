@@ -11,9 +11,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script th:inline="javascript">
 		var expenseList = [[${expenseList}]];
-		var fixValue = [[#{account.fixValue}]];
-		var varValue = [[#{account.varValue}]];
-		var totalValue = [[#{account.totalValue}]];
+		var fixAmt = [[#{account.fixAmt}]];
+		var varAmt = [[#{account.varAmt}]];
+		var totalAmt = [[#{account.totalAmt}]];
 	</script>
 	<script src="/js/accountChart.js"></script>
 </head>
@@ -26,17 +26,17 @@
 		<thead>
 		<tr>
 			<th scope="col" th:text="#{account.yyyyMM}"></th>
-			<th scope="col" th:text="#{account.fixValue}"></th>
-			<th scope="col" th:text="#{account.varValue}"></th>
-			<th scope="col" th:text="#{account.totalValue}"></th>
+			<th scope="col" th:text="#{account.fixAmt}"></th>
+			<th scope="col" th:text="#{account.varAmt}"></th>
+			<th scope="col" th:text="#{account.totalAmt}"></th>
 		</tr>
 		</thead>
 		<tbody>
 		<tr th:each="expense : ${expenseList}">
 			<td th:text="${expense.aggDate}"/>
-			<td th:text="${expense.fixValue}"/>
-			<td th:text="${expense.varValue}"/>
-			<td th:text="${expense.fixValue + expense.varValue}"/>
+			<td th:text="${expense.fixAmt}"/>
+			<td th:text="${expense.varAmt}"/>
+			<td th:text="${expense.fixAmt + expense.varAmt}"/>
 		</tr>
 		</tbody>
 	</table>

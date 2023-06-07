@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS public.users
 CREATE TABLE IF NOT EXISTS public.expense
 (
     seq integer NOT NULL DEFAULT nextval('account_seq_seq'::regclass),
-    fix_value integer DEFAULT 0,
-    var_value integer DEFAULT 0,
+    fix_amt integer DEFAULT 0,
+    var_amt integer DEFAULT 0,
     agg_date date NOT NULL DEFAULT now(),
     CONSTRAINT account_pkey PRIMARY KEY (seq)
 )

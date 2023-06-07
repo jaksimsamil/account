@@ -5,20 +5,20 @@ $(function() {
       labels: expenseList.map(row => row.aggDate),
       datasets: [
         {
-          label: fixValue,
-          data: expenseList.map(row => row.fixValue),
+          label: fixAmt,
+          data: expenseList.map(row => row.fixAmt),
           borderColor: '#36A2EB',
           backgroundColor: '#36A2EB'
         },
         {
-          label: varValue,
-          data: expenseList.map(row => row.varValue),
+          label: varAmt,
+          data: expenseList.map(row => row.varAmt),
           borderColor: '#8c0863',
           backgroundColor: '#8c0863'
         },
         {
-            label: totalValue,
-            data: expenseList.map(row => row.fixValue + row.varValue),
+            label: totalAmt,
+            data: expenseList.map(row => row.fixAmt + row.varAmt),
             borderColor: '#11b893',
             backgroundColor: '#11b893'
         }
@@ -36,5 +36,5 @@ $(function() {
                         }
                     }
                 }
-            });}
+        });}
 );
