@@ -16,6 +16,7 @@
 		var totalAmt = [[#{account.totalAmt}]];
 	</script>
 	<script src="/js/accountChart.js"></script>
+	<script src="/js/account.js"></script>
 </head>
 <body>
 <div class="container">
@@ -29,14 +30,16 @@
 			<th scope="col" th:text="#{account.fixAmt}"></th>
 			<th scope="col" th:text="#{account.varAmt}"></th>
 			<th scope="col" th:text="#{account.totalAmt}"></th>
+			<th scope="col">REG TEST</th>
 		</tr>
 		</thead>
 		<tbody>
 		<tr th:each="expense : ${expenseList}">
-			<td th:text="${expense.aggDate}"/>
+			<td th:text="${expense.aggDate}" th:onclick="getDetailData([[${expense.aggDate}]])"></td>
 			<td th:text="${expense.fixAmt}"/>
 			<td th:text="${expense.varAmt}"/>
 			<td th:text="${expense.fixAmt + expense.varAmt}"/>
+			<td th:text="${expense.aggDate}" th:onclick="regDetailData([[${expense.aggDate}]])"></td>
 		</tr>
 		</tbody>
 	</table>
