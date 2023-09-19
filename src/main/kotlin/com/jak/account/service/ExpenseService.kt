@@ -1,5 +1,6 @@
 package com.jak.account.service
 
+import com.jak.account.dto.Expense
 import com.jak.account.dto.ExpenseDetail
 import com.jak.account.dto.ExpenseDetailResponse
 import org.slf4j.LoggerFactory
@@ -31,7 +32,7 @@ class ExpenseService (
                 return expenseDetails.map { it.toResponse() }
         }
 
-        fun setExpenseDetail(expenseDetail: ExpenseDetail): ExpenseDetail{
-                return expenseDetailRepository.save(expenseDetail)
+        fun setExpense(expense: Expense): Expense {
+                return expenseRepository.save(expense)
         }
 }

@@ -41,16 +41,16 @@ class AccountController(
                 @PathVariable regYm: String
         ): List<ExpenseDetailResponse> {
                 // pre-condition: Logon success on LoginFilter
-                return  expenseService.getExpenseDetailList(regYm);
+                return  expenseService.getExpenseDetailList(regYm)
         }
 
-        @PostMapping("/detail")
+        @PostMapping("/save")
         @ResponseBody
-        fun regDetailInfo(
-                @RequestBody expenseDetailRequest: ExpenseDetailRequest
-        ): ExpenseDetailResponse {
+        fun saveData(
+                @RequestBody expenseRequest: ExpenseRequest
+        ): ExpenseResponse {
                 // pre-condition: Logon success on LoginFilter
-                val expenseDetail = expenseService.setExpenseDetail(expenseDetailRequest.toEntity())
-                return  expenseDetail.toResponse();
+                val expense = expenseService.setExpense(expenseRequest.toEntity())
+                return expense.toResponse()
         }
 }

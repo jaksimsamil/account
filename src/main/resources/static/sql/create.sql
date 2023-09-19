@@ -5,9 +5,10 @@
 CREATE TABLE IF NOT EXISTS public.expense
 (
     seq integer NOT NULL DEFAULT nextval('account_seq_seq'::regclass),
-    fix_amt integer DEFAULT 0,
-    var_amt integer DEFAULT 0,
-    agg_date date NOT NULL DEFAULT now(),
+    fix integer DEFAULT 0,
+    fluct integer DEFAULT 0,
+    etc integer DEFAULT 0,
+    agg_date date DEFAULT now(),
     CONSTRAINT account_pkey PRIMARY KEY (seq)
 )
 
@@ -56,3 +57,5 @@ TABLESPACE pg_default;
 
 ALTER TABLE IF EXISTS public.users
     OWNER to postgres;
+
+-- INSERT INTO public.users( uuid, id, password, auth_level) VALUES ('acc29c13-f7f8-47f4-8541-739a1bf3ae15', 'admin', '2b64d24d81199af4b9c343ab12e24a52c4ddb7f9c5502879d8bc119fd3499dcf', 'ADMIN');

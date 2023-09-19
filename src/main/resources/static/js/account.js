@@ -10,20 +10,25 @@ function getDetailData(regYm) {
         });
 };
 
-function regDetailData(regYm) {
+function saveData() {
+        var fix = $('#fix').val();
+        var fluct = $('#fluct').val();
+        var etc = $('#etc').val();
         $.ajax({
                   type: "post",
-                  url: "/detail",
+                  url: "/save",
                   contentType: 'application/json',
                   data:  JSON.stringify({
-                            "amount": 100000,
-                            "useCode": "FIX",
-                            "etc": "TEST",
-                            "regYm": regYm
+                            "fix": fix,
+                            "fluct": fluct,
+                            "etc": etc
                   }),
-                  success: function (data) {
-                          console.log(data);
-                          //TODO: show popup table
+                  success: function () {
+                        alert("저장하였습니다.");
+                        $('#fix').val('');
+                        $('#fluct').val('');
+                        $('#etc').val('');
+                        $('#staticBackdrop').modal('hide');
                   }
         });
 };
