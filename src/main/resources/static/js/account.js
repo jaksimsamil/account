@@ -10,10 +10,14 @@ function getDetailData(regYm) {
         });
 };
 
-function saveData() {
+function save() {
         var fix = $('#fix').val();
         var fluct = $('#fluct').val();
         var etc = $('#etc').val();
+        var now = new Date();
+        var regYm = "".concat(now.getFullYear()).concat(".")
+                                .concat(now.getMonth()+1).concat(".");
+
         $.ajax({
                   type: "post",
                   url: "/save",
@@ -21,7 +25,8 @@ function saveData() {
                   data:  JSON.stringify({
                             "fix": fix,
                             "fluct": fluct,
-                            "etc": etc
+                            "etc": etc,
+                            "regYm": regYm
                   }),
                   success: function () {
                         alert("저장하였습니다.");
@@ -29,6 +34,9 @@ function saveData() {
                         $('#fluct').val('');
                         $('#etc').val('');
                         $('#staticBackdrop').modal('hide');
+                  },
+                  error: function (data) {
+                        alert(data.responseText);
                   }
         });
 };

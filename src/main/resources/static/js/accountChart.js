@@ -1,13 +1,8 @@
 
 $(function() {
-        function stringToDate(aggDate) {
-                var stringAggDate = new Date(aggDate);
-                return "".concat(stringAggDate.getFullYear()).concat(".")
-                                .concat(stringAggDate.getMonth()+1).concat(".");
-        };
   // List sorted by month
     const dataset = {
-      labels: expenseList.map(row => stringToDate(row.aggDate)),
+      labels: expenseList.map(row => row.regYm),
       datasets: [
         {
           label: fix,

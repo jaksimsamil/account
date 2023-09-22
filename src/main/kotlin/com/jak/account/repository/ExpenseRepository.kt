@@ -9,5 +9,6 @@ import org.springframework.stereotype.Repository
 @Repository
 interface ExpenseRepository: JpaRepository<Expense, Int> {
         fun findAllBy(by: Sort): List<Expense>
+        fun findAllByRegYm(regYm: String): List<Expense>
         fun save(expense: Expense): Expense
 }

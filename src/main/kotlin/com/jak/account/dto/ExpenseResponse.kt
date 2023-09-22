@@ -9,5 +9,7 @@ data class ExpenseResponse (
         val fix: Int,
         val fluct: Int,
         val etc: Int,
-        val aggDate: Date?
+        val regYm: String,
+        val regDate: Date?,
+        val modDate: Date?
 )

@@ -18,7 +18,7 @@ class ExpenseService (
         private val logger = LoggerFactory.getLogger(ExpenseService::class.java)
 
         fun getExpenseList() : List<ExpenseResponse> {
-                val expenses = expenseRepository.findAllBy(Sort.by(Sort.Direction.ASC, "aggDate"))
+                val expenses = expenseRepository.findAllBy(Sort.by(Sort.Direction.ASC, "regDate"))
                 return expenses.map { it.toResponse() }
         }
 

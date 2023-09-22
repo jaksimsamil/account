@@ -4,12 +4,14 @@
 
 CREATE TABLE IF NOT EXISTS public.expense
 (
-    seq integer NOT NULL DEFAULT nextval('account_seq_seq'::regclass),
+    seq integer NOT NULL DEFAULT nextval('expense_seq_seq'::regclass),
     fix integer DEFAULT 0,
     fluct integer DEFAULT 0,
     etc integer DEFAULT 0,
-    agg_date date DEFAULT now(),
-    CONSTRAINT account_pkey PRIMARY KEY (seq)
+    reg_ym character(8) COLLATE pg_catalog."default",
+    reg_date timestamp with time zone DEFAULT now(),
+    mod_date timestamp with time zone DEFAULT now(),
+    CONSTRAINT expense_pkey PRIMARY KEY (seq)
 )
 
 TABLESPACE pg_default;

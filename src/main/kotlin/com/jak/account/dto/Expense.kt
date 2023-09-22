@@ -12,13 +12,17 @@ class Expense (
         @Column(name = "fix") val fix: Int,
         @Column(name = "fluct") val fluct: Int,
         @Column(name = "etc") val etc: Int,
-        @Column(name = "agg_date") val aggDate: Date?
+        @Column(name = "reg_ym") val regYm: String,
+        @Column(name = "reg_date") val regDate: Date?,
+        @Column(name = "mod_date") val modDate: Date?
 )  {
         fun toResponse() = ExpenseResponse(
                 seq = seq,
                 fix = fix,
                 fluct = fluct,
                 etc = etc,
-                aggDate = aggDate
+                regYm = regYm,
+                regDate = regDate,
+                modDate = modDate
         )
 }

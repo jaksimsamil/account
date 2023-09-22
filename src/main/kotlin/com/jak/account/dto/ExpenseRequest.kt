@@ -7,13 +7,17 @@ data class ExpenseRequest (
         val fix: Int,
         val fluct: Int,
         val etc: Int,
-        val aggDate: Date?
+        val regYm: String,
+        val regDate: Date?,
+        val modDate: Date?
 ) {
         fun toEntity() = Expense (
                 seq = seq,
                 fix = fix,
                 fluct = fluct,
                 etc = etc,
-                aggDate = aggDate
+                regYm = regYm,
+                regDate = regDate,
+                modDate = modDate
         )
 }

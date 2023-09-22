@@ -44,7 +44,7 @@
 		</thead>
 		<tbody>
 		<tr th:each="expense : ${expenseList}">
-			<td th:text="${#dates.format(expense.aggDate, 'yyyy.MM.')}" th:onclick="getDetailData([[${expense.aggDate}]])"></td>
+			<td th:text="${expense.regYm}" th:onclick="getDetailData([[${expense.regYm}]])"></td>
 			<td th:text="${#numbers.formatInteger(expense.fix + expense.fluct + expense.etc, 3, 'COMMA')}"/>
 			<td th:text="${#numbers.formatInteger(expense.fix, 3, 'COMMA')}"/>
 			<td th:text="${#numbers.formatInteger(expense.fluct, 3, 'COMMA')}"/>
@@ -70,26 +70,26 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="staticBackdropLabel">등록</h5>
+					<h5 class="modal-title" id="staticBackdropLabel" th:text="#{account.registration}"/>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					<div class="input-group input-group-sm mb-3">
-						<span class="input-group-text" id="inputGroup-sizing-sm1">고정</span>
+						<span class="input-group-text" id="inputGroup-sizing-sm1" th:text="#{account.fix}"/>
 						<input type="text" id="fix" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm1" required>
 					</div>
 					<div class="input-group input-group-sm mb-3">
-						<span class="input-group-text" id="inputGroup-sizing-sm2">가변</span>
+						<span class="input-group-text" id="inputGroup-sizing-sm2" th:text="#{account.fluct}"/>
 						<input type="text" id="fluct" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm2" required>
 					</div>
 					<div class="input-group input-group-sm mb-3">
-						<span class="input-group-text" id="inputGroup-sizing-sm3">기타</span>
+						<span class="input-group-text" id="inputGroup-sizing-sm3" th:text="#{account.etc}"/>
 						<input type="text" id="etc" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm3" required>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-					<button type="button" th:onclick="saveData()" class="btn btn-primary">저장</button>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal" th:text="#{account.close}"/>
+					<button type="button" th:onclick="save()" class="btn btn-primary" th:text="#{account.save}"/>
 				</div>
 			</div>
 		</div>
