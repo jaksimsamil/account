@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<title>account</title>
+	<title>Home</title>
 	<meta charset="utf-8">
 	<meta name="author" content="Jun">
 
@@ -9,47 +9,17 @@
 	<link href="/css/signin.css" rel="stylesheet">
 	<script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
 	<script src="/js/jquery-3.6.3.min.js"></script>
-	<script src="/js/sha256.min.js"></script>
-	<style>
-		.bd-placeholder-img {
-			font-size: 1.125rem;
-			text-anchor: middle;
-			-webkit-user-select: none;
-			-moz-user-select: none;
-			user-select: none;
-		}
-
-		@media (min-width: 768px) {
-			.bd-placeholder-img-lg {font-size: 3.5rem;}
-		}
-   	 </style>
-	<script>
-		$(document).ready(function() {
-			$('#signSubmit').click(function (event) {
-				$('#password').val(sha256($('#password').val()));
-				$("form").submit();
-				event.preventDefault();
-				$('#id').val('');
-				$('#password').val('');
-			});
-		});
-	</script>
 </head>
 <body class="text-center">
-	<main class="form-signin">
-		<form action="/loginCheck" method="post">
-		<!-- <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
-			<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
-			<div class="form-floating">
-				<input type="text" class="form-control" id="id" name="id" placeholder="name@example.com">
-				<label for="id">Id</label>
+	<div class="container overflow-hidden">
+		<div class="row gx-6">
+			<div class="col-4 m-auto">
+				<div class="p-5 border bg-light " style="cursor:pointer" onclick="location='/account'" th:text="#{home.account}"/>
 			</div>
-			<div class="form-floating">
-				<input type="password" class="form-control" id="password"  name="password" placeholder="Password">
-				<label for="password">Password</label>
+			<div class="col-4 m-auto">
+				<div class="p-5 border bg-light " style="cursor:pointer" onclick="location='/asset'" th:text="#{home.asset}"/>
 			</div>
-			<button class="w-100 btn btn-lg btn-primary" id="signSubmit" type="submit">Sign in</button>
-		</form>
-	</main>
+		</div>
+	</div>
 </body>
 </html>

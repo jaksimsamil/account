@@ -14,12 +14,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes
 import java.util.*
 
 @Controller
-class LoginController(
+class LoginHomeController(
         private val loginService: LoginService
 ) {
-        private val logger = LoggerFactory.getLogger(LoginController::class.java)
+        private val logger = LoggerFactory.getLogger(LoginHomeController::class.java)
 
         @GetMapping("/")
+        fun login(): String {
+                return "login"
+        }
+
+        @GetMapping("/home")
         fun home(): String {
                 return "home"
         }
@@ -41,6 +46,6 @@ class LoginController(
                 val sessionCodeName = SessionCode.LoginUser.getSessionName()
                 val session = httpServletRequest.getSession(true)
                 session.setAttribute(sessionCodeName, user)
-                return "redirect:/account"
+                return "redirect:/home"
         }
 }

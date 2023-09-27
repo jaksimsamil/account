@@ -3,7 +3,6 @@ package com.jak.account.dto
 import java.util.*
 import jakarta.persistence.*
 import org.hibernate.annotations.DynamicInsert
-import java.text.SimpleDateFormat
 
 @DynamicInsert
 @Entity(name="expense")
